@@ -1,8 +1,5 @@
 # tominurmi.net
 
-Portfolio page!
-
-To be continued ...
-
+Portfolio page
 
 [tominurmi.net](http://tominurmi.net)
