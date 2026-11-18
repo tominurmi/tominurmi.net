@@ -59,10 +59,10 @@
       .home { grid-column: 1; grid-row: 1; gap: 5px; font-size: 12px; }
       #fullscreen { grid-column: 2; grid-row: 1; padding: 10px; width: 44px; }
       #fullscreen span { display: none; }
-      .telemetry { top: calc(max(12px, env(safe-area-inset-top)) + 88px); left: max(16px, env(safe-area-inset-left)); right: max(16px, env(safe-area-inset-right)); flex-wrap: wrap; gap: 12px; }
-      dl { gap: 12px 20px; }
+      .telemetry { top: calc(max(12px, env(safe-area-inset-top)) + 88px); left: max(16px, env(safe-area-inset-left)); right: max(16px, env(safe-area-inset-right)); flex-wrap: nowrap; align-items: flex-start; gap: 12px; }
+      dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); flex: 1; gap: 12px 20px; }
       dd { font-size: 16px; }
-      .actions { margin-left: auto; }
+      .actions { margin-left: auto; flex-direction: column; }
       .actions button { padding-inline: 12px; }
       .overlay { padding: 180px 16px 100px; }
       .message { padding: 24px 20px; }
