@@ -1,116 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--
-
-                   n
-        |\   |  or
-       _| \-/ic
-      /    un
-    //    ~ + \
-   //         |
-  //    \      \
- |||     | .  .|
-///     / \___/
-
-- Keep calm and ride the rainbows.
-
--->
 <head>
-<meta charset="UTF-8">
-<title>Tomi Nurmi - UI/UX, Visual Designer</title>
-<meta name="description" content="A curious mind with an urge to create.">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="canonical" href="https://tominurmi.net"/>
-
-<style>
-  @import url('https://rsms.me/inter/inter.css');
-
-  html {
-    font-family: 'Inter', sans-serif;
-    font-size: 62.5%
-  }
-
-  @supports (font-variation-settings: normal) {
-    html { font-family: 'Inter var', sans-serif; }
-  }
-
-  body {
-    background: #F4F7FA;
-    background: radial-gradient(circle, rgba(22,120,161,1) 0%, rgba(148,187,233,1) 100%);
-    font-weight: 300;
-    color: #4d4d4d;
-    font-size: 1.6rem;
-    margin: 2rem;
-  }
-
-  h1 {
-    font-size: 2.2rem;
-    margin: 3rem 0 1rem 0;
-    font-weight: 500;
-  }
-
-  h2, h3 {
-    font-size: 1.6rem;
-    margin: 0;
-  }
-  h3 {font-weight: 300;}
-  h2 {font-weight: 400;}
-
-  p {margin: 0 0 1.8rem 0;}
-
-  strong, a {
-    font-weight: 500;
-  }
-
-  img {
-    margin: 0 auto;
-    width: 130px;
-    display: block;
-  }
-
-  section {
-    max-width: 370px;
-    margin: 0 auto 4rem auto;
-    background: #fff;
-    border-radius: 4px;
-  }
-
-  div {padding: 2rem;}
-  hr {border: 2px dashed #F4F7FA;}
-</style>
-
-<script>
-  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-K3XDGJ');
-</script>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Tomi Nurmi — Designer & curious mind</title>
+  <meta name="description" content="A curious mind with an urge to create. UI/UX, visual design, 3D, interaction, animation, music, and drawing.">
+  <meta name="theme-color" content="#12618b">
+  <link rel="canonical" href="https://tominurmi.net/">
+  <link rel="icon" type="image/svg+xml" href="tomi.svg">
+  <link rel="preload" href="assets/fonts/bricolage-semibold.ttf" as="font" type="font/ttf" crossorigin>
+  <style>
+    @font-face {
+      font-family: "Bricolage Grotesque";
+      src: url("assets/fonts/bricolage-semibold.ttf") format("truetype");
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+    :root {
+      color-scheme: light;
+      --paper: #12618b;
+      --ink: #f4f7fa;
+      --muted: #e6f0f7;
+      --teal: #26bfbe;
+      --line: #a0c5da;
+      --display: "Bricolage Grotesque", "Trebuchet MS", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100svh;
+      display: flow-root;
+      padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+      background:
+        radial-gradient(circle 240px at var(--pointer-x, 50%) var(--pointer-y, 50%), rgb(220 242 255 / var(--light-opacity, 0)) 0%, transparent 75%),
+        radial-gradient(ellipse at var(--glow-x, 35%) var(--glow-y, 25%), #12618b 0%, #12648b 45%, #3b5e89 100%);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection { background: var(--ink); color: var(--paper); }
+    html { background-color: var(--paper); scrollbar-color: var(--muted) var(--paper); }
+    a { color: inherit; text-underline-offset: 5px; }
+    a:focus-visible { outline: 2px solid var(--ink); outline-offset: 5px; }
+    main { width: min(640px, calc(100% - 48px)); margin: clamp(32px, 8vh, 80px) auto 48px; }
+    header { display: flex; align-items: center; gap: 20px; }
+    .avatar-link { position: relative; display: inline-flex; flex: 0 0 auto; border-radius: 50%; }
+    .avatar-link::after { content: ""; position: absolute; inset: 0; border: 2px solid var(--teal); border-radius: 50%; pointer-events: none; opacity: 0; animation: ring-pulse 8s ease-out 3s infinite; animation-play-state: paused; }
+    .avatar-link.is-pulsing::after { animation-play-state: running; }
+    .avatar-link:hover::after, .avatar-link:focus-visible::after { animation: none; }
+    @keyframes ring-pulse {
+      0% { transform: scale(1); opacity: 0; }
+      3% { transform: scale(1.04); opacity: .75; }
+      16%, 100% { transform: scale(1.24); opacity: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .avatar-link::after { animation: none; }
+    }
+    .avatar-link:hover .avatar, .avatar-link:focus-visible .avatar { border-color: var(--ink); }
+    .avatar-tooltip { position: absolute; top: calc(100% + 6px); left: 0; z-index: 3; width: max-content; max-width: min(280px, calc(100vw - 40px)); padding: 10px 14px; border-radius: 8px; background: #14383b; color: #f4f7fa; font-size: 13px; line-height: 1.5; font-weight: 400; opacity: 0; visibility: hidden; }
+    .avatar-tooltip::before { content: ""; position: absolute; bottom: 100%; left: 0; width: 100%; height: 6px; }
+    .avatar-link:not([data-tooltip-dismissed]):hover .avatar-tooltip,
+    .avatar-link:not([data-tooltip-dismissed]):focus-visible .avatar-tooltip { opacity: 1; visibility: visible; }
+    .avatar { flex: 0 0 auto; width: 88px; height: 88px; padding: 5px; border: 2px solid var(--teal); border-radius: 50%; }
+    h1 { margin: 0; font-family: var(--display); font-size: 34px; line-height: 1.2; font-weight: 600; letter-spacing: -.035em; }
+    .role { margin: 8px 0 0; color: var(--muted); font-size: 15px; }
+    .intro { margin-block: 40px; }
+    .lead { max-width: 20ch; margin: 0 0 24px; font-family: var(--display); font-size: clamp(34px, 5.5vw, 48px); line-height: 1.15; letter-spacing: -.035em; font-weight: 600; }
+    .about { max-width: 56ch; margin: 0; color: var(--muted); font-size: 16px; line-height: 1.75; }
+    nav { border-top: 1px solid var(--line); padding-top: 24px; }
+    ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 32px; list-style: none; padding: 0; margin: 0; }
+    li a { display: block; width: fit-content; max-width: 100%; padding-block: 12px; text-decoration: none; }
+    .link-name { display: flex; align-items: center; gap: 8px; font-family: var(--display); font-size: 18px; font-weight: 600; text-decoration: underline; text-decoration-color: var(--teal); text-decoration-thickness: 3px; }
+    .link-name svg { flex-shrink: 0; width: 14px; height: 14px; stroke: currentColor; stroke-width: 1.5; fill: none; }
+    li a:hover .link-name, li a:focus-visible .link-name { text-decoration-color: var(--ink); text-decoration-thickness: 3px; }
+    li a:hover .link-name svg, li a:focus-visible .link-name svg { transform: rotate(12deg); }
+    small { display: block; margin-top: 8px; font-size: 13px; line-height: 1.5; color: var(--muted); }
+    footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 12px; line-height: 1.6; color: var(--muted); }
+    footer p { display: flex; align-items: center; gap: 10px; margin: 0; }
+    .rainbow { flex-shrink: 0; width: 24px; height: 18px; fill: none; stroke: var(--teal); stroke-width: 1.5; stroke-linecap: round; }
+    @media (max-width: 540px) {
+      main { width: calc(100% - 40px); margin-block: 24px; }
+      header { gap: 16px; }
+      header > div { min-width: 0; }
+      h1 { font-size: 28px; }
+      .avatar { width: 72px; height: 72px; }
+      .role { font-size: 14px; line-height: 1.5; margin-top: 6px; }
+      .intro { margin-block: 28px; }
+      .lead { font-size: clamp(30px, 8vw, 40px); margin-bottom: 24px; }
+      nav { padding-top: 12px; }
+      ul { grid-template-columns: 1fr; gap: 0; }
+      li a { width: 100%; min-height: 64px; padding-block: 14px; }
+      small { margin-top: 8px; overflow-wrap: anywhere; }
+      footer { margin-top: 28px; }
+    }
+    @media (hover: none) {
+      li a:active { background: #f4f7fa14; }
+    }
+  </style>
+  <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K3XDGJ');
+  </script>
 </head>
-
 <body>
-  <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K3XDGJ" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-  </noscript>
+  <noscript><iframe title="Google Tag Manager" src="https://www.googletagmanager.com/ns.html?id=GTM-K3XDGJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <main>
+    <header>
+      <a class="avatar-link" href="curiosity-lander.html" aria-label="Play Lunar Lander" aria-describedby="avatar-tooltip">
+      <svg class="avatar" viewBox="0 0 324 324" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="robot-title" width="80" height="80">
+        <title id="robot-title">Tomi’s one-eyed robot avatar</title>
+        <mask id="robot-mask" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="324" height="324">
+          <circle cx="162" cy="162" r="158" fill="#2D9CDB" stroke="#474445" stroke-width="8"/>
+        </mask>
+        <g mask="url(#robot-mask)">
+          <circle cx="162" cy="162" r="158" fill="#2D9CDB"/>
+          <path d="M251.892 323C251.964 321.502 252 319.995 252 318.479C252 267.957 211.706 227 162 227C112.294 227 72 267.957 72 318.479C72 319.995 72.0363 321.502 72.108 323H251.892Z" fill="#E0E0E0" stroke="#474445" stroke-width="8"/>
+          <path d="M157.667 64H166.333L175 114H149L157.667 64Z" fill="#E0E0E0" stroke="#474445" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="162" cy="52" r="18" fill="#CF8888" stroke="#474445" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="162" cy="184" r="92" fill="#E0E0E0" stroke="#474445" stroke-width="8"/>
+          <path d="M252 201H228.287C228.287 223.091 198.851 241 162.539 241C126.227 241 96.7904 223.091 96.7904 201H72" stroke="#474445" stroke-width="8" stroke-linejoin="round"/>
+          <circle id="robot-eye" cx="162" cy="167" r="41" fill="#F2F2F2" stroke="#4F4F4F" stroke-width="8"/>
+          <g id="robot-pupil">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M162 194C176.912 194 189 181.912 189 167C189 152.088 176.912 140 162 140C158.076 140 154.348 140.837 150.984 142.342C155.719 144.179 159.075 148.779 159.075 154.163C159.075 161.163 153.4 166.838 146.4 166.838C141.89 166.838 137.931 164.482 135.684 160.935C135.236 162.884 135 164.915 135 167C135 181.912 147.088 194 162 194Z" fill="#4F4F4F"/>
+          </g>
+          <circle cx="162" cy="162" r="158" stroke="#474445" stroke-width="8"/>
+        </g>
+      </svg>
+      <span class="avatar-tooltip" id="avatar-tooltip" role="tooltip">Are you a curious mind as well?</span>
+      </a>
+      <div><h1>Tomi Nurmi</h1><p class="role">UI/UX & visual design</p></div>
+    </header>
+    <section class="intro" aria-label="About me">
+      <p class="lead">Driven to create.<br>Eager to explore.</p>
+      <p class="about">I draw things. Sometimes they move. Mostly, I just follow my curiosity.</p>
+    </section>
+    <nav aria-label="My work and profiles">
+      <ul>
+        <li><a href="https://no.linkedin.com/pub/tomi-nurmi/27/4b5/709"><span class="link-name">LinkedIn <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 16 16 4M5 4h11v11"/></svg></span><small>The &quot;professional&quot; side.</small></a></li>
+        <li><a href="https://www.instagram.com/tomi.graphics/"><span class="link-name">Instagram <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 16 16 4M5 4h11v11"/></svg></span><small>Illustrations & drawings.</small></a></li>
+        <li><a href="https://github.com/tominurmi/"><span class="link-name">GitHub <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 16 16 4M5 4h11v11"/></svg></span><small>Code.</small></a></li>
+        <li><a href="https://dribbble.com/tominurmi"><span class="link-name">Dribbble <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 16 16 4M5 4h11v11"/></svg></span><small>Ideas & explorations.</small></a></li>
+        <li><a href="https://www.behance.net/tominurmi"><span class="link-name">Behance <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 16 16 4M5 4h11v11"/></svg></span><small>Design projects.</small></a></li>
+      </ul>
+    </nav>
+    <footer><p><svg class="rainbow" viewBox="0 0 26 20" aria-hidden="true"><path d="M2 18C2 1 24 1 24 18M6 18C6 7 20 7 20 18M10 18C10 13 16 13 16 18"/></svg>Keep calm and ride the rainbows.</p></footer>
+  </main>
+  <script type="module">
+    const eye = document.querySelector('#robot-eye');
+    const pupil = document.querySelector('#robot-pupil');
+    const background = document.body;
+    const avatarLink = document.querySelector('.avatar-link');
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') avatarLink.setAttribute('data-tooltip-dismissed', '');
+    });
+    for (const event of ['pointerenter', 'focus']) {
+      avatarLink.addEventListener(event, () => avatarLink.removeAttribute('data-tooltip-dismissed'));
+    }
+    let avatarInView = false;
+    function updateRingVisibility() {
+      avatarLink.classList.toggle('is-pulsing', avatarInView && !document.hidden);
+    }
+    const avatarObserver = new IntersectionObserver(([entry]) => {
+      avatarInView = entry.isIntersecting;
+      updateRingVisibility();
+    });
+    avatarObserver.observe(avatarLink);
+    document.addEventListener('visibilitychange', updateRingVisibility);
+    const trackingAllowed = matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)');
+    // SVG units: the pupil stays inside the eye, moving about 2 CSS pixels.
+    const maxOffset = 9;
+    let frame = 0;
+    let pointerX = 0;
+    let pointerY = 0;
 
-  <section>
-    <div>
-    <img alt="Robot avatar" src="tomi.svg">
-    <h1>Tomi Nurmi</h1>
-    <h2>A curious mind with an urge to create.</h2>
-    <br/>
-    <h3>I love working with things related to UI/UX, visual design, 3D, interaction, animation, music, and drawing.</h3>
-    </div>
-    <hr/>
-    <div class="links">
-    <p><strong>Check out:</strong></p>
-    <p><a class="instagram" style="color:#405de6" href="https://www.instagram.com/tomi.graphics/" target="_blank">Instagram</a> for my illustrations,</p>
-    <p><a class="dribbble" style="color:#ea4c89" href="https://dribbble.com/tominurmi" target="_blank">Dribbble</a> for my ideas,</p>
-    <p><a class="behance" style="color:#1769ff" href="https://www.behance.net/tominurmi" target="_blank">Behance</a> for my design projects,</p>
-    <p><a class="github" style="color:#4078c0" href="https://github.com/tominurmi/" target="_blank">Github</a> for my code,</p>
-    <p><a class="twitter" style="color:#1da1f2" href="https://twitter.com/tomi_nurmi" target="_blank">Twitter</a> for my thoughts,</p>
-    <p>and <a class="linkedin" style="color:#0077b5" href="https://no.linkedin.com/pub/tomi-nurmi/27/4b5/709" target="_blank">LinkedIn</a> for my cv</p>
-    </div>
-  </section>
+    function resetEye() {
+      cancelAnimationFrame(frame);
+      frame = 0;
+      pupil.removeAttribute('transform');
+      background.style.removeProperty('--glow-x');
+      background.style.removeProperty('--glow-y');
+      background.style.removeProperty('--pointer-x');
+      background.style.removeProperty('--pointer-y');
+      background.style.removeProperty('--light-opacity');
+    }
+
+    function updateEye() {
+      frame = 0;
+      if (!trackingAllowed.matches || document.hidden) return;
+      const bounds = eye.getBoundingClientRect();
+      const backgroundBounds = background.getBoundingClientRect();
+      // Keep the color field calm: move its center, never its palette.
+      const x = Math.max(0, Math.min(1, pointerX / innerWidth));
+      const y = Math.max(0, Math.min(1, pointerY / innerHeight));
+      background.style.setProperty('--glow-x', `${35 + (x - 0.5) * 24}%`);
+      background.style.setProperty('--glow-y', `${25 + (y - 0.5) * 18}%`);
+      background.style.setProperty('--pointer-x', `${pointerX - backgroundBounds.left}px`);
+      background.style.setProperty('--pointer-y', `${pointerY - backgroundBounds.top}px`);
+      background.style.setProperty('--light-opacity', '0.06');
+      if (bounds.bottom < 0 || bounds.top > innerHeight) {
+        pupil.removeAttribute('transform');
+        return;
+      }
+      const dx = pointerX - (bounds.left + bounds.width / 2);
+      const dy = pointerY - (bounds.top + bounds.height / 2);
+      const distance = Math.hypot(dx, dy);
+      const scale = maxOffset / Math.max(160, distance);
+      pupil.setAttribute('transform', `translate(${dx * scale} ${dy * scale})`);
+    }
+
+    window.addEventListener('pointermove', (event) => {
+      if (!trackingAllowed.matches || event.pointerType !== 'mouse') return;
+      pointerX = event.clientX;
+      pointerY = event.clientY;
+      if (!frame) frame = requestAnimationFrame(updateEye);
+    }, { passive: true });
+
+    document.documentElement.addEventListener('pointerleave', resetEye);
+    window.addEventListener('blur', resetEye);
+    window.addEventListener('resize', resetEye);
+    window.addEventListener('scroll', resetEye, { passive: true });
+    document.addEventListener('visibilitychange', resetEye);
+    trackingAllowed.addEventListener('change', resetEye);
+  </script>
 </body>
+</html>
