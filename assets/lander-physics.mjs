@@ -62,7 +62,8 @@ export function landingProblem(ship, world) {
   const feet = [-RULES.footWidth, RULES.footWidth].map(x => shipPoint(ship, x, RULES.footY));
   if (feet.some(foot => foot.x < world.pad.left || foot.x > world.pad.right)) return 'Aim for the teal landing pad.';
   if (Math.abs(ship.angle) > RULES.maxLandingAngle) return 'A little too tilted. Keep the lander within 12° of upright.';
-  if (ship.vy > RULES.maxVerticalSpeed || ship.vy < 0) return 'Too fast on the way down. Touch down at 26 m/s or less.';
+  if (ship.vy < 0) return 'Still climbing at touchdown. Let the lander settle onto the pad.';
+  if (ship.vy > RULES.maxVerticalSpeed) return 'Too fast on the way down. Touch down at 26 m/s or less.';
   if (Math.abs(ship.vx) > RULES.maxHorizontalSpeed) return 'Too much sideways drift. Stay at 16 m/s or less.';
   return '';
 }
