@@ -6,6 +6,7 @@ const overlay = document.querySelector('#overlay');
 const successAvatar = document.querySelector('#success-avatar');
 const title = document.querySelector('#message-title');
 const message = document.querySelector('#message-body');
+const messageIntro = document.querySelector('#message-intro');
 const launch = document.querySelector('#launch');
 const pause = document.querySelector('#pause');
 const restart = document.querySelector('#restart');
@@ -216,7 +217,7 @@ function publish() {
   const paused = ship.phase === 'paused';
   overlay.hidden = flying || Boolean(crashEffect && crashEffect.elapsed < crashDuration);
   successAvatar.hidden = pilotFailed || !['ready', 'landed', 'paused'].includes(ship.phase);
-  document.getElementById('message-intro').hidden = ship.phase !== 'ready';
+  messageIntro.hidden = ship.phase !== 'ready';
   pause.disabled = !flying && !paused;
   pause.textContent = paused ? 'Resume' : 'Pause';
   restart.disabled = !ready;
