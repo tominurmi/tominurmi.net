@@ -215,12 +215,13 @@ function publish() {
   const paused = ship.phase === 'paused';
   overlay.hidden = flying || Boolean(crashEffect && crashEffect.elapsed < crashDuration);
   successAvatar.hidden = !['ready', 'landed', 'paused'].includes(ship.phase);
+  document.getElementById('message-intro').hidden = ship.phase !== 'ready';
   pause.disabled = !flying && !paused;
   pause.textContent = paused ? 'Resume' : 'Pause';
   restart.disabled = !ready;
   for (const button of buttons) button.disabled = !flying;
   const messages = {
-    ready: ['Ready, little explorer?', 'Your robot is in the cockpit. Reach the teal pad, slow down, and land upright.', 'Launch'],
+    ready: ['You followed your curiosity.', 'Your robot is in the cockpit. Reach the teal pad, slow down, and land upright.', 'Launch'],
     paused: ['A little breathing space.', 'Your flight is paused. Resume whenever you’re ready.', 'Resume flight'],
     landed: ['One small step for a robot.', 'Soft touchdown. Nicely done, explorer.', 'Fly again'],
     crashed: ['A slightly harder landing.', ship.reason, 'Try again'],

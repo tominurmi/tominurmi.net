@@ -19,7 +19,7 @@
     main:fullscreen { height: 100vh; }
     a { color: var(--ink); text-underline-offset: 5px; }
     :focus-visible { outline: 2px solid var(--ink); outline-offset: 5px; }
-    .topline { position: absolute; top: max(16px, env(safe-area-inset-top)); left: max(24px, env(safe-area-inset-left)); right: max(24px, env(safe-area-inset-right)); z-index: 2; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; }
+    .topline { position: absolute; top: max(16px, env(safe-area-inset-top)); left: max(24px, env(safe-area-inset-left)); right: max(24px, env(safe-area-inset-right)); z-index: 2; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 16px; }
     .home { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; width: fit-content; font-size: 14px; }
     .home svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.6; }
     h1 { margin: 0; font-family: "Bricolage Grotesque", "Trebuchet MS", sans-serif; font-weight: 600; font-size: 26px; line-height: 1.1; letter-spacing: -.035em; }
@@ -91,7 +91,7 @@
   <main id="game">
     <div class="topline">
       <a class="home" href="./"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m10 4-6 6 6 6M4 10h12"/></svg>Back to reality 😢</a>
-      <h1>You followed your curiosity.</h1>
+      <h1 class="sr-only">Lunar Lander</h1>
       <button id="fullscreen" type="button" aria-label="Enter fullscreen" hidden><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 3H3v4M13 3h4v4M17 13v4h-4M7 17H3v-4"/></svg><span>Fullscreen</span></button>
     </div>
     <div class="telemetry" aria-label="Flight instruments">
@@ -108,7 +108,8 @@
       <div class="overlay" id="overlay">
         <div class="message">
           <img id="success-avatar" class="success-avatar" src="tomi.svg" width="72" height="72" alt="Tomi’s robot pilot" hidden>
-          <h2 id="message-title">Ready, little explorer?</h2>
+          <h2 id="message-title">You followed your curiosity.</h2>
+          <p id="message-intro"><strong>Ready, little explorer?</strong></p>
           <p id="message-body">Your robot is in the cockpit. Reach the teal pad, slow down, and land upright.</p>
           <button class="primary" id="launch" type="button" disabled>Loading lander…</button>
         </div>
