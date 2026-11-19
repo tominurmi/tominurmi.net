@@ -35,7 +35,10 @@ export function createWorld(width, height, bottomInset = 0, topInset = 0, padPos
     [approach, terrainHeight * 0.87], [pad.left, pad.y],
     [pad.right, pad.y], [pad.right + 20, terrainHeight * 0.86], [width, terrainHeight * 0.8],
   ];
-  const spawnY = Math.max(height * 0.15, Math.min(height * 0.5, topInset + 36));
+  const preferredSpawnY = Math.max(height * 0.15, Math.min(height * 0.5, topInset + 36));
+  // Keep clear of the highest terrain point, so short screens never spawn on the ground.
+  // This also keeps spawnY above pad.y, which resize() divides by.
+  const spawnY = Math.min(preferredSpawnY, terrainHeight * 0.76 - RULES.footY - 48);
   return { width, height, pad, terrain, spawnY, bottomInset, topInset, padPosition };
 }
 
