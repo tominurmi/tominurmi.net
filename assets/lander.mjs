@@ -343,8 +343,9 @@ restart.addEventListener('click', () => {
 
 window.addEventListener('keydown', event => {
   const action = keyActions[event.code];
-  // Space/Enter on real buttons keep their native activation behavior.
-  if (event.target.closest('button, a')) return;
+  // Space/Enter on real buttons and links keep their native activation behavior.
+  const onControl = event.target instanceof Element && event.target.closest('button, a');
+  if (onControl && (event.code === 'Space' || event.code === 'Enter')) return;
   if (action && ship?.phase === 'flying') {
     event.preventDefault();
     keys.add(event.code);
