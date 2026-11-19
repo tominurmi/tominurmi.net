@@ -15,4 +15,4 @@ A lightweight personal site built with HTML, CSS, and vanilla JavaScript. Click 
 
 ## License
 
-Site code is licensed under [MIT](LICENSE). The bundled Bricolage Grotesque font is licensed under the [SIL Open Font License](assets/fonts/OFL.txt).
+Site code is licensed under [MIT](LICENSE). The robot avatar, drawings, visual elements, and site copy are © Tomi Nurmi, all rights reserved. The bundled Bricolage Grotesque font is licensed under the [SIL Open Font License](assets/fonts/OFL.txt).

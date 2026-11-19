@@ -1,6 +1,19 @@
+Scope
+
+The MIT License below applies to the site code only (HTML, CSS and JavaScript).
+It does not apply to the robot avatar (tomi.svg and the same artwork inline in
+index.html), drawings, illustrations, other artwork, visual elements and visual
+design, or the site copy. Those are Copyright (c) Tomi Nurmi. All rights reserved.
+Graphics drawn by the code itself, such as the lander and scenery in the game,
+are part of the code and covered by the MIT License.
+
+The bundled Bricolage Grotesque font has its own license: assets/fonts/OFL.txt.
+
+---
+
 MIT License
 
-Copyright (c) 2019 Tomi Nurmi
+Copyright (c) 2019–2026 Tomi Nurmi
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
