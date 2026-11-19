@@ -22,6 +22,7 @@ const keyActions = { ArrowLeft: 'left', KeyA: 'left', ArrowRight: 'right', KeyD:
 let world;
 let ship;
 let ready = false;
+let pilotFailed = false;
 let frame = 0;
 let lastTime = 0;
 let accumulator = 0;
@@ -214,7 +215,7 @@ function publish() {
   const flying = ship.phase === 'flying';
   const paused = ship.phase === 'paused';
   overlay.hidden = flying || Boolean(crashEffect && crashEffect.elapsed < crashDuration);
-  successAvatar.hidden = !['ready', 'landed', 'paused'].includes(ship.phase);
+  successAvatar.hidden = pilotFailed || !['ready', 'landed', 'paused'].includes(ship.phase);
   document.getElementById('message-intro').hidden = ship.phase !== 'ready';
   pause.disabled = !flying && !paused;
   pause.textContent = paused ? 'Resume' : 'Pause';
@@ -229,6 +230,7 @@ function publish() {
   if (messages[ship.phase]) {
     [title.textContent, message.textContent, launch.textContent] = messages[ship.phase];
     launch.disabled = !ready;
+    if (!ready) launch.textContent = 'Loading lander…';
     status.textContent = `${title.textContent} ${message.textContent}`;
   } else {
     status.textContent = 'Flying. Aim for the teal pad. P pauses the flight.';
@@ -450,12 +452,9 @@ if (!context) {
   resize();
   new ResizeObserver(resize).observe(canvas);
   pilot.src = new URL('../tomi.svg', import.meta.url).href;
-  pilot.decode().then(() => {
+  // The pilot is decoration only: fly with an empty cockpit if the image fails.
+  pilot.decode().catch(() => { pilotFailed = true; }).finally(() => {
     ready = true;
     publish();
-  }).catch(() => {
-    title.textContent = 'Our pilot hasn’t arrived.';
-    message.textContent = 'The robot image could not load. Refresh the page to try again.';
-    status.textContent = message.textContent;
   });
 }
